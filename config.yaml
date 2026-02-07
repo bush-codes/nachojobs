@@ -1,0 +1,72 @@
+resume_path: "resume/Resume - EM - Chris Bush.pdf"
+output_dir: "output"
+freshness_days: 14
+
+schedule:
+  interval_hours: 12
+  run_on_startup: true
+
+ollama:
+  base_url: "http://localhost:11434"
+  model: "llama3.1:8b"
+  timeout_seconds: 120
+  top_k_matches: 3
+
+target_roles:
+  titles:
+    - "Engineering Manager"
+    - "Senior Engineering Manager"
+    - "Director of Engineering"
+    - "VP of Engineering"
+    - "Head of Engineering"
+    - "Principal Engineer"
+    - "Staff Engineer"
+  locations:
+    - "Remote"
+    - "Lafayette, CO"
+    - "Denver, CO"
+    - "Boulder, CO"
+  employment_types:
+    - "FullTime"
+
+companies:
+  ashby:
+    - slug: ramp
+      name: Ramp
+    - slug: notion
+      name: Notion
+    - slug: linear
+      name: Linear
+    - slug: vercel
+      name: Vercel
+    - slug: openai
+      name: OpenAI
+    - slug: plaid-inc
+      name: Plaid
+    - slug: retool
+      name: Retool
+    - slug: airtable
+      name: Airtable
+  greenhouse:
+    - token: discord
+      name: Discord
+    - token: stripe
+      name: Stripe
+    - token: coinbase
+      name: Coinbase
+    - token: twitch
+      name: Twitch
+    - token: netlify
+      name: Netlify
+    - token: figma
+      name: Figma
+    - token: databricks
+      name: Databricks
+    - token: anthropic
+      name: Anthropic
+    - token: cloudflare
+      name: Cloudflare
+    - token: datadog
+      name: Datadog
+    - token: gusto
+      name: Gusto
