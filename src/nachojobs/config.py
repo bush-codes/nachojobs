@@ -23,6 +23,7 @@ class TargetRoles(BaseModel):
     titles: list[str] = []
     locations: list[str] = []
     employment_types: list[str] = []
+    remote_usa_only: bool = False
 
 
 class AshbyCompany(BaseModel):

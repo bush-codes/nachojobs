@@ -12,21 +12,28 @@ from nachojobs.fetchers.greenhouse import GreenhouseFetcher
 from nachojobs.matcher import JobMatcher
 from nachojobs.models import Job, MatchedJob, PipelineResult
 from nachojobs.resume_parser import extract_resume_text
-from nachojobs.utils import is_within_days
+from nachojobs.utils import is_remote_usa, is_within_days
 
 logger = logging.getLogger(__name__)
+
+MAX_CONCURRENT_FETCHES = 20
 
 
 async def _fetch_all(settings: Settings) -> tuple[list[Job], list[str]]:
     ashby = AshbyFetcher()
     greenhouse = GreenhouseFetcher()
     errors: list[str] = []
+    semaphore = asyncio.Semaphore(MAX_CONCURRENT_FETCHES)
+
+    async def _limited(coro):
+        async with semaphore:
+            return await coro
 
     tasks = []
     for co in settings.companies.ashby:
-        tasks.append(ashby.fetch(co.slug, co.name))
+        tasks.append(_limited(ashby.fetch(co.slug, co.name)))
     for co in settings.companies.greenhouse:
-        tasks.append(greenhouse.fetch(co.token, co.name))
+        tasks.append(_limited(greenhouse.fetch(co.token, co.name)))
 
     results = await asyncio.gather(*tasks, return_exceptions=True)
 
@@ -46,6 +53,10 @@ def _filter_freshness(jobs: list[Job], days: int) -> list[Job]:
     return [j for j in jobs if is_within_days(j.published_at, days)]
 
 
+def _filter_remote_usa(jobs: list[Job]) -> list[Job]:
+    return [j for j in jobs if is_remote_usa(j)]
+
+
 def _filter_titles(jobs: list[Job], target_titles: list[str]) -> list[Job]:
     if not target_titles:
         return jobs
@@ -61,7 +72,7 @@ def _write_result(result: PipelineResult, output_dir: str) -> Path:
     out.mkdir(parents=True, exist_ok=True)
     ts = result.run_at.strftime("%Y%m%d_%H%M%S")
     path = out / f"matches_{ts}.json"
-    path.write_text(result.model_dump_json(indent=2))
+    path.write_text(result.model_dump_json(indent=2, exclude_none=True))
     logger.info(f"Results written to {path}")
     return path
 
@@ -81,8 +92,14 @@ async def run_pipeline(settings: Settings, skip_llm: bool = False) -> PipelineRe
     # 3. Filter by freshness
     jobs = _filter_freshness(all_jobs, settings.freshness_days)
     logger.info(f"After freshness filter ({settings.freshness_days}d): {len(jobs)}")
+    del all_jobs  # allow GC to collect unfiltered jobs
 
-    # 4. Pre-filter by title keywords if >100 jobs
+    # 4. Filter to remote USA jobs if configured
+    if settings.target_roles.remote_usa_only:
+        jobs = _filter_remote_usa(jobs)
+        logger.info(f"After remote-USA filter: {len(jobs)}")
+
+    # 5. Pre-filter by title keywords if >100 jobs
     if len(jobs) > 100 and settings.target_roles.titles:
         jobs = _filter_titles(jobs, settings.target_roles.titles)
         logger.info(f"After title pre-filter: {len(jobs)}")
@@ -98,7 +115,7 @@ async def run_pipeline(settings: Settings, skip_llm: bool = False) -> PipelineRe
             errors=errors,
         )
 
-    # 5. LLM matching
+    # 6. LLM matching
     matcher = JobMatcher(settings.ollama, resume_text)
     try:
         matched = matcher.match(jobs)
@@ -122,7 +139,7 @@ async def run_pipeline(settings: Settings, skip_llm: bool = False) -> PipelineRe
         errors=errors,
     )
 
-    # 6. Write output
+    # 7. Write output
     _write_result(result, settings.output_dir)
 
     return result

@@ -86,7 +86,7 @@ class AshbyFetcher(BaseFetcher):
             job_url=raw.get("jobUrl", ""),
             apply_url=raw.get("applyUrl"),
             description_plain=desc_plain,
-            description_html=desc_html,
+            description_html=None,
             compensation=compensation,
             compensation_summary=compensation_summary,
             offices=offices,

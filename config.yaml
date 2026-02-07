@@ -10,7 +10,7 @@ ollama:
   base_url: "http://localhost:11434"
   model: "llama3.1:8b"
   timeout_seconds: 120
-  top_k_matches: 3
+  top_k_matches: 10
 
 target_roles:
   titles:
@@ -28,6 +28,7 @@ target_roles:
     - "Boulder, CO"
   employment_types:
     - "FullTime"
+  remote_usa_only: true
 
 companies:
   ashby:
@@ -47,6 +48,127 @@ companies:
       name: Retool
     - slug: airtable
       name: Airtable
+    - slug: moderntreasury
+      name: Modern Treasury
+    - slug: deel
+      name: Deel
+    - slug: vanta
+      name: Vanta
+    - slug: ironclad
+      name: Ironclad
+    - slug: cursor
+      name: Cursor
+    - slug: mercury
+      name: Mercury
+    - slug: loom
+      name: Loom
+    - slug: zip
+      name: Zip
+    - slug: Harvey
+      name: Harvey
+    - slug: posthog
+      name: PostHog
+    - slug: marqeta
+      name: Marqeta
+    - slug: coder
+      name: Coder
+    - slug: multiverse
+      name: Multiverse
+    - slug: zapier
+      name: Zapier
+    - slug: lemonade
+      name: Lemonade
+    - slug: quora
+      name: Quora
+    - slug: synthesia
+      name: Synthesia
+    - slug: camunda
+      name: Camunda
+    - slug: primer
+      name: Primer
+    - slug: lambda
+      name: Lambda
+    - slug: whatnot
+      name: Whatnot
+    - slug: decagon
+      name: Decagon
+    - slug: mintlify
+      name: Mintlify
+    - slug: cointracker
+      name: CoinTracker
+    - slug: abridge
+      name: Abridge
+    - slug: attio
+      name: Attio
+    - slug: clickup
+      name: ClickUp
+    - slug: envoy
+      name: Envoy
+    - slug: finch
+      name: Finch
+    - slug: first-resonance
+      name: First Resonance
+    - slug: gorgias
+      name: Gorgias
+    - slug: golinks
+      name: GoLinks
+    - slug: hightouch
+      name: Hightouch
+    - slug: modal
+      name: Modal
+    - slug: mux
+      name: Mux
+    - slug: opal
+      name: Opal
+    - slug: orum
+      name: Orum
+    - slug: pave
+      name: Pave
+    - slug: pinecone
+      name: Pinecone
+    - slug: replit
+      name: Replit
+    - slug: runway
+      name: Runway
+    - slug: sentry
+      name: Sentry
+    - slug: superhuman
+      name: Superhuman
+    - slug: watershed
+      name: Watershed
+    - slug: baseten
+      name: Baseten
+    - slug: benchling
+      name: Benchling
+    - slug: cohere
+      name: Cohere
+    - slug: column
+      name: Column
+    - slug: deepgram
+      name: Deepgram
+    - slug: drata
+      name: Drata
+    - slug: flatfile
+      name: Flatfile
+    - slug: neon
+      name: Neon
+    - slug: orb
+      name: Orb
+    - slug: perplexity
+      name: Perplexity
+    - slug: resend
+      name: Resend
+    - slug: sanity
+      name: Sanity
+    - slug: stytch
+      name: Stytch
+    - slug: supabase
+      name: Supabase
+    - slug: temporal
+      name: Temporal
+    - slug: warp
+      name: Warp
+
   greenhouse:
     - token: discord
       name: Discord
@@ -70,3 +192,115 @@ companies:
       name: Datadog
     - token: gusto
       name: Gusto
+    - token: robinhood
+      name: Robinhood
+    - token: duolingo
+      name: Duolingo
+    - token: hubspot
+      name: HubSpot
+    - token: lyft
+      name: Lyft
+    - token: gitlab
+      name: GitLab
+    - token: airbnb
+      name: Airbnb
+    - token: mongodb
+      name: MongoDB
+    - token: elastic
+      name: Elastic
+    - token: asana
+      name: Asana
+    - token: pinterest
+      name: Pinterest
+    - token: dropbox
+      name: Dropbox
+    - token: instacart
+      name: Instacart
+    - token: affirm
+      name: Affirm
+    - token: chime
+      name: Chime
+    - token: amplitude
+      name: Amplitude
+    - token: pagerduty
+      name: PagerDuty
+    - token: justworks
+      name: Justworks
+    - token: cultureamp
+      name: Culture Amp
+    - token: coursera
+      name: Coursera
+    - token: udemy
+      name: Udemy
+    - token: reddit
+      name: Reddit
+    - token: okta
+      name: Okta
+    - token: block
+      name: Block
+    - token: cockroachlabs
+      name: Cockroach Labs
+    - token: toast
+      name: Toast
+    - token: marqeta
+      name: Marqeta
+    - token: braze
+      name: Braze
+    - token: contentful
+      name: Contentful
+    - token: airtable
+      name: Airtable
+    - token: webflow
+      name: Webflow
+    - token: twilio
+      name: Twilio
+    - token: newrelic
+      name: New Relic
+    - token: circleci
+      name: CircleCI
+    - token: launchdarkly
+      name: LaunchDarkly
+    - token: samsara
+      name: Samsara
+    - token: flexport
+      name: Flexport
+    - token: verkada
+      name: Verkada
+    - token: labelbox
+      name: Labelbox
+    - token: grammarly
+      name: Grammarly
+    - token: movableink
+      name: Movable Ink
+    - token: relativity
+      name: Relativity
+    - token: seatgeek
+      name: SeatGeek
+    - token: peloton
+      name: Peloton
+    - token: salesloft
+      name: SalesLoft
+    - token: nextdoor
+      name: Nextdoor
+    - token: opendoor
+      name: Opendoor
+    - token: allbirds
+      name: Allbirds
+    - token: sweetgreen
+      name: Sweetgreen
+    - token: 6sense
+      name: 6sense
+    - token: calendly
+      name: Calendly
+    - token: pendo
+      name: Pendo
+    - token: fivetran
+      name: Fivetran
+    - token: starburst
+      name: Starburst
+    - token: materialize
+      name: Materialize
+    - token: imply
+      name: Imply
+    - token: clickhouse
+      name: ClickHouse

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: letter;
+    margin: 0.75in 0.85in;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 11pt;
+    line-height: 1.35;
+    color: #000;
+  }
+
+  h1.name {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28pt;
+    font-weight: bold;
+    margin-bottom: 4pt;
+  }
+
+  .contact-line {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    color: #333;
+    margin-bottom: 2pt;
+  }
+
+  .contact-line a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #999;
+    margin: 14pt 0;
+  }
+
+  h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16pt;
+    font-weight: bold;
+    margin-bottom: 8pt;
+  }
+
+  .summary-text {
+    margin-bottom: 0;
+  }
+
+  ul.skills-list,
+  ul.bullets {
+    list-style-type: disc;
+    margin-left: 28pt;
+    margin-bottom: 0;
+  }
+
+  ul.skills-list li,
+  ul.bullets li {
+    margin-bottom: 2pt;
+  }
+
+  .job-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 10pt;
+    margin-bottom: 2pt;
+  }
+
+  .job-meta {
+    font-style: italic;
+    margin-bottom: 6pt;
+    font-size: 10.5pt;
+  }
+
+  ul.bullets {
+    margin-bottom: 10pt;
+  }
+
+  .sub-role {
+    font-weight: bold;
+    margin-top: 8pt;
+    margin-bottom: 2pt;
+  }
+
+  .edu-entry {
+    margin-bottom: 8pt;
+  }
+
+  .edu-entry strong {
+    display: block;
+  }
+
+  .additional-text {
+    margin-top: 4pt;
+  }
+</style>
+</head>
+<body>
+
+<h1 class="name">Christopher Bush</h1>
+<div class="contact-line">{{ subtitle }} | Lafayette, CO, USA | bush.codes@proton.me</div>
+<div class="contact-line">+1 737-333-4381 | linkedin.com/in/christopherbush/ | github.com/bush-codes</div>
+
+<hr>
+
+<h2>SUMMARY</h2>
+<p class="summary-text">{{ summary }}</p>
+
+<hr>
+
+<h2>CORE SKILLS</h2>
+<ul class="skills-list">
+{% for skill in core_skills %}
+  <li>{{ skill }}</li>
+{% endfor %}
+</ul>
+
+<hr>
+
+<h2>PROFESSIONAL EXPERIENCE</h2>
+
+<div class="job-header">Regrow Agriculture &mdash; Software Engineering Manager, MRV</div>
+<div class="job-meta">August 2023 &ndash; March 2025 | Remote</div>
+<ul class="bullets">
+  <li>Grew the MRV engineering organization from <b>4 to 11 engineers</b>, hiring and onboarding team members across Australia, the Americas, and the EU.</li>
+  <li>Served as <b>first-line manager</b>, owning hiring, onboarding, regular 1:1s, performance feedback, and career development planning.</li>
+  <li>Led the transition of the product engineering organization to <b>Scrum</b>, introducing shared roadmaps, sprint planning, retrospectives, and cross-team alignment.</li>
+  <li>Acted as a <b>hands-on technical leader</b>, contributing backend Python features for new data entry workflows and integrations with scientific APIs.</li>
+  <li>Led the introduction of a <b>shared UI design system</b>, partnering with Design and frontend leadership to improve consistency, velocity, and maintainability.</li>
+  <li>Championed and led the migration from <b>Nomad to Kubernetes</b>, sunsetting legacy infrastructure and achieving approximately <b>$20,000/month in cloud cost savings</b>.</li>
+  <li>Partnered with Product Management to prioritize the Kubernetes migration by presenting <b>COGS reduction data</b> and long-term scalability benefits.</li>
+  <li>Resolved cross-team conflict by defining shared values, norms, and feedback mechanisms.</li>
+  <li>Improved operational workflows to accelerate customer issue resolution and reduce production friction, significantly improving <b>MTTR</b> and reducing escaped bug volume.</li>
+</ul>
+
+<div class="job-header">SailPoint &mdash; Software Engineering Manager, Data Intelligence</div>
+<div class="job-meta">September 2021 &ndash; August 2023 | Remote</div>
+<ul class="bullets">
+  <li>Managed <b>17 engineers across two teams</b> (US, Ukraine, LATAM) building <b>AI-adjacent SaaS applications</b>, including identity analytics and anomaly detection capabilities.</li>
+  <li>Operated as a <b>manager-of-leads</b>, with a backend engineering lead and a frontend/UI engineering lead reporting directly to me.</li>
+  <li>Owned and led delivery of the <b>Outliers</b> feature, enabling detection of anomalous identities and access patterns.</li>
+  <li>Traveled to <b>Mexico City</b> to onboard <b>11 engineers in person</b> while SailPoint established its new Mexico City engineering office.</li>
+  <li>Led teams through periods of <b>significant organizational change</b>, maintaining delivery, morale, and clear communication in a distributed environment.</li>
+  <li>Owned people management responsibilities including hiring, performance reviews, promotions, coaching, and difficult performance conversations.</li>
+  <li>Led <b>FedRAMP compliance efforts</b>, partnering with Security, Legal, and Compliance teams to meet regulatory requirements in our migration to GovCloud.</li>
+  <li>Established and improved <b>operational excellence practices</b>, including SLOs, incident management, on-call rotations, alerting, and observability.</li>
+</ul>
+
+<div class="job-header">SparkCognition &mdash; Software Engineering Manager / Architect, SparkPredict</div>
+<div class="job-meta">October 2019 &ndash; May 2021 | Austin, TX &amp; Remote</div>
+<ul class="bullets">
+  <li>Managed <b>20 engineers across 5 scrum teams</b>, supporting backend services, UI development, time-series data ingestion pipelines, and shared infrastructure.</li>
+  <li>Served as <b>first-line manager</b> for multiple teams, conducting regular 1:1s, performance feedback, hiring, and mentoring senior and junior engineers.</li>
+  <li>Introduced Scrum practices, identified and developed technical leads, and improved delivery predictability across teams.</li>
+  <li>Acted as <b>technical architect</b> for SparkPredict backend systems, evolving the platform from a monolithic MVP to a scalable microservices architecture.</li>
+  <li>Partnered closely with Product and Data Science teams on time-series model execution, alerting systems, and multi-tenant APIs.</li>
+</ul>
+
+<div class="sub-role">Team Lead / Senior Software Engineer, SparkPredict</div>
+<div class="job-meta">November 2017 &ndash; October 2019</div>
+<ul class="bullets">
+  <li>Led backend engineering for time-series data ingestion, large-scale data processing, model execution services, alerting systems, and client-facing APIs.</li>
+  <li>Built and maintained microservices primarily in <b>Python</b> and Scala.</li>
+  <li>Supported release planning and execution using Kanban and Scrum practices.</li>
+</ul>
+
+<div class="job-header">TipCow &mdash; Founder &amp; CTO</div>
+<div class="job-meta">March 2014 &ndash; June 2018 | Austin, TX</div>
+<ul class="bullets">
+  <li>Founded and built TipCow, a live music tipping platform enabling fans to tip live musicians.</li>
+  <li>Hired and led an agile engineering team delivering a <b>Django/Postgres-backed web platform</b> and native <b>iOS and Android applications</b>.</li>
+  <li>Scaled the platform to <b>1,000+ bands registered nationwide</b>.</li>
+  <li>Owned all product, engineering, infrastructure, and deployment efforts (AWS EC2, RDS, Lambda, Beanstalk).</li>
+  <li>Conducted user research, A/B testing, and market validation to guide product decisions.</li>
+  <li>Built partnerships with the Austin Mayor&rsquo;s Office, festivals, and music organizations.</li>
+  <li>Achieved national recognition, including coverage in <b>Forbes</b>.</li>
+  <li>Represented the company at SXSW Interactive and multiple startup investor pitch events.</li>
+</ul>
+
+<hr>
+
+<h2>EDUCATION &amp; CERTIFICATIONS</h2>
+
+<div class="edu-entry">
+  <strong>Master of Science, Computer Science (In Progress, Part-Time)</strong>
+  University of Texas at Austin
+</div>
+
+<div class="edu-entry">
+  <strong>Bachelor of Science, Computer Science &amp; Bachelor of Arts, Mathematics</strong>
+  University of Texas at Austin
+</div>
+
+<div class="edu-entry">
+  <strong>Certified ScrumMaster (CSM)</strong> &mdash; Scrum Alliance
+</div>
+
+<hr>
+
+<h2>ADDITIONAL EXPERIENCE</h2>
+<p class="additional-text">Earlier career software engineering roles (2006&ndash;2017) at IBM, HP, Zilliant, and Microsoft are available on my LinkedIn profile. Full CV upon request.</p>
+
+</body>
+</html>
